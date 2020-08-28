@@ -1,26 +1,36 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12 col-md-8 offset-md-2">
+    <div class="col-sm-12 col-md-8 offset-md-2 card my-3">
         <h2 class="agregar-gasto my-3">Buscar vuelos</h2>
         <div class= "form-group" >
           <%= form_for :flight, method: :get do |f|%>
             <%= f.label :date %>:
             <%= f.date_field :outboundpartialdate, class:"form-control" %><br />
             <%= f.label :origin %>:
-            <%= f.collection_select :originplace, @places, :id, :place_id, class:"form-control form-control-lg"%><br />
+            <%= f.collection_select :originplace, @places, :place_id, :place_id, class:"form-control form-control-lg"%><br />
             <%= f.label :destination %>:
-            <%= f.collection_select :destinationplace, @places, :id, :place_id, class:"form-control form-control-lg"%><br />
+            <%= f.collection_select :destinationplace, @places, :place_id, :place_id, class:"form-control form-control-lg"%><br />
             <%= f.submit "Buscar", class: "btn btn-success" %>
           <% end %>
         </div>
     </div>
   </div>
-  <div class="row">
-    <% @flights.Quotes.each do |flight| %>
-      <%= flight %>
-    <% end %>
+  <div class="row justify-content-center">
+    <div class="col-md-6" >
+      <% if @flights.class == NilClass %>
+        <h1>Busca nuevos vuelos!</h1>
+      <% else %>
+        <ul>
+          <% @flights.Quotes.first(20).each do |flight| %>
+            <li class="card m-2 p-4">
+              Precio : USD <%= flight.MinPrice.round %> - 
+              <%= flight.Direct == true ? "Vuelo directo" : "Vuelo con escalas" %> -
+              Origen: <%=@origin%> -
+              Destino: <%=@destination%>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
 </div>
-      
-<%=console%>
-      
