@@ -4,16 +4,21 @@ class PlacesController < ApplicationController
 
   def bulk_create
     @places = fetch_places
+    @user = current_user
     @places.each do |place|
-      Place.create(
+      new_place = Place.new(
         place_id: place.PlaceId,
         place: place.PlaceName,
         country_id: place.CountryId,
         region_id: place.RegionId,
         city_id: place.CityId,
-        country: place.CountryName
+        country: place.CountryName,
       )
+      new_place.user_id = @user.id
+      new_place.save!
     end
+    # raise
+    redirect_to root_path
   end
 
   private
