@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departure_id: 1
+  arrive_id: 1
+  currency: MyString
+  country: MyString
+
+two:
+  departure_id: 1
+  arrive_id: 1
+  currency: MyString
+  country: MyString
