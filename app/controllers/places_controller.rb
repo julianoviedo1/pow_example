@@ -3,6 +3,7 @@ require 'unirest'
 class PlacesController < ApplicationController
 
   def bulk_create
+    Place.destroy_all
     @places = fetch_places
     @user = current_user
     @places.each do |place|

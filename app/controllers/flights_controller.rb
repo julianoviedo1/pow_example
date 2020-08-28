@@ -2,8 +2,8 @@ class FlightsController < ApplicationController
   def index
     @places = Place.all
     @flights = flight_params ? fetch_flights : []
-    @origin = Place.find_by(place_id: params["flight"]["originplace"]).place
-    @destination = Place.find_by(place_id: params["flight"]["destinationplace"]).place
+    @origin = @flights.Places[0]["Name"]
+    @destination = @flights.Places[1]["Name"]
   end
 
   private
