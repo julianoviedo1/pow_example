@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Como levantar la app en localhost
+# rails server 
 
-Things you may want to cover:
+# Setup inicial de la app
+# rails new pow_proyect --database postgresql
+# cd pow_proyect
+# veo si le quiero agregar devise y lo instalo en caso de que si
+# luego db:create db:migrate
 
-* Ruby version
+# Descripción breve de la arquitectura de App
+# Modelos: User y Places (un user busca varios places)
+# Controllers: Places -> busca info de la api con parametros predeterminados
+# Flights -> busca los lugares de places los lista en un form para que el usuario busque la info que quiera.
+# Views -> home e index de flight 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
